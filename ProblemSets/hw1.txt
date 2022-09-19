@@ -1,0 +1,58 @@
+### Q1
+# Write your description of the code here (start each line with a #)
+# All of the patient data (with identifiers) was in files that are in the neuroblastoma_data directory
+# My first step was to list the contents of that directory. Then, I needed a way to isolate the identifiers
+# I did this by treating the data as "separated" by '.', and only taking the first field using cut
+# From there, I had a list of patient identifiers and it was only a matter of pulling the unique entries (sort)
+# And counting the number of lines
+###
+
+ls neuroblastoma_data | cut -f1 -d "." | sort -u | wc -l
+
+### Q2
+# Write your description of the code here (all 3 parts)
+# (2a) First, I cut only the column containing the chromosome information using cut.
+# Then, I pulled only unique occurences of each chromosome using sort (one per chromomsome)
+# Then, I counted the number of unique chromosomes (since they're listed 1/line) with wc -l
+#
+# (2b) Similar thought process to 2a, but with the source (column 2) instead of chromosome
+# I also didn't need to count, so there was no need for wc -l
+#
+# (2c) From the docs, the GFF file format, column 3 contains feature type information. 
+# Once I knew that, the thought process was similar to the other two ex's from this question
+###
+
+cut -f1 gencode.v35.annotation.gff3 | sort -u | wc -l
+cut -f2 gencode.v35.annotation.gff3 | sort -u
+cut -f3 gencode.v35.annotation.gff3 | sort -u
+
+### Q3
+# Write your description of the code here
+# First, I isolated the chromsome and gene_biotype data using cut
+# Then, I searched for all genes on chromsome Y using grep
+# I used the same approach to search for all protein_coding genes
+# Then, I counted the number of lines (number of genes) using wc -l
+###
+
+cut -f1,9 gencode.v35.annotation.gtf3 | grep chrY | grep protein_coding | wc -l
+
+### Q4
+# Write your description of the code here
+# I needed to search through all files in the expression_keep directory
+# So I recursively searched for APOE with grep
+# Since expression (TPM) is the 6th column, I isolated this column
+# Then I numerically sorted the expression data and printed out only the top (smallest) result
+###
+
+grep -r APOE expression_keep | cut -f6 | sort -n | head -n 1
+
+### Q5
+# Write your description of the code here
+# I isolated the chromosome (column 1), feature (column 3), and gene_biotype (which is where protein_coding is) data using grep
+# Then I isolated only the fields I was interested in from the ';' list of tags: the chromosome/feature data (c1) and the gene_biotype feature
+# This turned out to be c5 after I inspected the file using head
+# Then I searched the file for all protein_coding CDS genes using grep, and cut away the excess information (gene_id) before getting a unique count (uniq -c)
+# of how many protein_coding genes were on each chromosome
+###
+
+cut -f1,3,9 gencode.v35.annotation.gtf3 | cut -f1,5 -d ";" | grep CDS | grep protein_coding | cut -f1,2 | uniq -c
