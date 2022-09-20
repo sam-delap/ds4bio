@@ -1,3 +1,5 @@
 *.gz
 *.tgz
 *.results
+*.gff3
+*.gff
