@@ -22,9 +22,9 @@ ls neuroblastoma_data | cut -f1 -d "." | sort -u | wc -l
 # Once I knew that, the thought process was similar to the other two ex's from this question
 ###
 
-cut -f1 gencode.v35.annotation.gff3 | sort -u | wc -l
-cut -f2 gencode.v35.annotation.gff3 | sort -u
-cut -f3 gencode.v35.annotation.gff3 | sort -u
+cut -f1 gencode.v35.annotation.gtf | sort -u
+cut -f2 gencode.v35.annotation.gtf | sort -u
+cut -f3 gencode.v35.annotation.gtf | sort -u
 
 ### Q3
 # Write your description of the code here
@@ -34,7 +34,7 @@ cut -f3 gencode.v35.annotation.gff3 | sort -u
 # Then, I counted the number of lines (number of genes) using wc -l
 ###
 
-cut -f1,9 gencode.v35.annotation.gtf3 | grep chrY | grep protein_coding | wc -l
+cut -f1,9 gencode.v35.annotation.gtf | grep chrY | grep protein_coding | wc -l
 
 ### Q4
 # Write your description of the code here
@@ -55,4 +55,4 @@ grep -r APOE expression_keep | cut -f6 | sort -n | head -n 1
 # of how many protein_coding genes were on each chromosome
 ###
 
-cut -f1,3,9 gencode.v35.annotation.gtf3 | cut -f1,5 -d ";" | grep CDS | grep protein_coding | cut -f1,2 | uniq -c
+cut -f1,3,9 gencode.v35.annotation.gtf | cut -f1,5 -d ";" | grep CDS | grep protein_coding | cut -f1,2 | uniq -c
