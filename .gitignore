@@ -1,5 +1,9 @@
+# Gene
 *.gz
 *.tgz
 *.results
 *.gff3
 *.gff
+
+# CSV
+*.csv
