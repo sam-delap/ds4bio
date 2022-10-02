@@ -5,5 +5,9 @@
 *.gff3
 *.gff
 
-# CSV
+# Excel
 *.csv
+*.xls*
+
+# Zip
+*.zip
