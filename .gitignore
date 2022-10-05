@@ -9,6 +9,14 @@
 *.csv
 *.xls*
 
+# Tarballs
+*.tar
+
+# Text
+*.txt
+
+# JSON
+*.json
 # Images
 *.png
 
