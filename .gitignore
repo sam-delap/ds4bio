@@ -9,5 +9,8 @@
 *.csv
 *.xls*
 
+# Images
+*.png
+
 # Zip
 *.zip
