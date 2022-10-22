@@ -4,6 +4,7 @@
 *.results
 *.gff3
 *.gff
+*.gtf
 
 # Excel
 *.csv
